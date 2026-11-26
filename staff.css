@@ -1,0 +1,363 @@
+.staff-container {
+    max-width: 1280px;
+    min-height: calc(100vh - 120px);
+}
+
+.staff-login {
+    width: min(440px, 100%);
+    margin: 56px auto;
+    padding: 30px;
+}
+
+.staff-login h1,
+.staff-welcome h1 {
+    margin: 7px 0;
+    color: #263a31;
+    font-size: 24px;
+}
+
+.staff-login > p,
+.staff-welcome p,
+.staff-section-heading p {
+    margin: 6px 0 0;
+    color: #7d8797;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.staff-eyebrow {
+    color: #ad4e2c;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+#loginForm {
+    display: grid;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+#loginForm label {
+    color: #5e695f;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#loginForm input {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 12px;
+    border: 1px solid #e1e5df;
+    border-radius: 10px;
+    color: #263a31;
+    font: inherit;
+}
+
+#loginForm input:focus {
+    border-color: #bd8061;
+    outline: 3px solid rgba(189, 87, 47, 0.1);
+}
+
+#loginForm .primary-btn {
+    margin-top: 8px;
+}
+
+.staff-message {
+    min-height: 18px;
+    margin: 12px 0;
+    color: #28714b;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.staff-message.is-error {
+    color: #a94727;
+}
+
+.staff-back-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #8a6048;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.staff-back-link:hover {
+    text-decoration: underline;
+}
+
+.staff-login[hidden],
+.staff-dashboard[hidden],
+.staff-section[hidden] {
+    display: none !important;
+}
+
+.staff-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+    background: linear-gradient(120deg, #fff 0%, #fff8f1 100%);
+}
+
+.staff-logout {
+    width: auto;
+    min-width: 92px;
+    margin: 0;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+    align-items: start;
+    gap: 18px;
+}
+
+.staff-section {
+    min-width: 0;
+}
+
+.staff-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.staff-section-heading h2 {
+    margin: 0;
+    color: #263a31;
+    font-size: 19px;
+}
+
+.staff-refresh-btn,
+.stock-row button {
+    padding: 8px 11px;
+    border: 1px solid #edcdbb;
+    border-radius: 9px;
+    background: #fff7f1;
+    color: #a94727;
+    font: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.staff-refresh-btn:hover,
+.stock-row button:hover {
+    background: #ffede1;
+}
+
+.staff-orders,
+.stock-list {
+    display: grid;
+    gap: 11px;
+}
+
+.staff-order-card {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #e9e5dd;
+    border-radius: 13px;
+    background: #fff;
+}
+
+.staff-order-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #f0ece6;
+}
+
+.staff-order-heading > div {
+    display: grid;
+    gap: 4px;
+}
+
+.staff-order-number {
+    color: #263a31;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.staff-order-heading small,
+.staff-order-customer > span {
+    color: #848a84;
+    font-size: 11px;
+}
+
+.staff-order-total {
+    color: #ad4e2c;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.staff-order-customer {
+    display: grid;
+    gap: 4px;
+    padding: 11px 0;
+    overflow-wrap: anywhere;
+}
+
+.staff-order-customer > strong {
+    color: #3e4b42;
+    font-size: 12px;
+}
+
+.staff-order-items {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 11px 0;
+    border-top: 1px dashed #e9e5dd;
+    border-bottom: 1px dashed #e9e5dd;
+    list-style: none;
+}
+
+.staff-order-items li {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #606b62;
+    font-size: 12px;
+}
+
+.staff-order-items strong {
+    color: #34443a;
+    white-space: nowrap;
+}
+
+.staff-order-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding-top: 12px;
+}
+
+.staff-order-field {
+    display: grid;
+    min-width: 0;
+    gap: 5px;
+}
+
+.staff-order-field > span {
+    color: #7d817a;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.staff-order-field select {
+    width: 100%;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid #e5e3dd;
+    border-radius: 8px;
+    background: white;
+    color: #39463d;
+    font: inherit;
+    font-size: 11px;
+}
+
+.staff-payment-state {
+    display: inline-block;
+    width: fit-content;
+    padding: 7px 9px;
+    border-radius: 8px;
+    background: #fff1e7;
+    color: #a94727;
+    font-size: 11px;
+}
+
+.staff-payment-state.is-paid {
+    background: #e9f5ed;
+    color: #26734d;
+}
+
+.staff-empty {
+    padding: 24px 12px;
+    border: 1px dashed #e3ddd3;
+    border-radius: 12px;
+    color: #858b83;
+    font-size: 13px;
+    text-align: center;
+}
+
+.stock-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 76px auto;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #eee9e1;
+    border-radius: 11px;
+}
+
+.stock-menu-name {
+    display: grid;
+    min-width: 0;
+    gap: 4px;
+}
+
+.stock-menu-name strong {
+    overflow-wrap: anywhere;
+    color: #39463d;
+    font-size: 12px;
+}
+
+.stock-menu-name small {
+    color: #8a9088;
+    font-size: 10px;
+}
+
+.stock-row label {
+    display: grid;
+    gap: 3px;
+    color: #7d817a;
+    font-size: 10px;
+}
+
+.stock-row input {
+    width: 100%;
+    min-width: 0;
+    padding: 7px 5px;
+    border: 1px solid #e4e3dc;
+    border-radius: 7px;
+    font: inherit;
+    font-size: 12px;
+}
+
+.stock-row button {
+    padding: 8px;
+}
+
+@media (max-width: 900px) {
+    .staff-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .staff-login {
+        margin: 28px auto;
+        padding: 21px;
+    }
+
+    .staff-welcome {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .staff-logout {
+        width: 100%;
+    }
+
+    .staff-order-controls {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

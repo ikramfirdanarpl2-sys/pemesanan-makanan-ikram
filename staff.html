@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir & Dapur | FoodOrder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="brand-icon">🍽️</span>
+        <div>
+            <strong>FoodOrder</strong>
+            <small>Kasir &amp; dapur</small>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">Lihat menu</a>
+    </nav>
+</header>
+
+<main class="container staff-container">
+    <section class="panel staff-login" id="loginPanel">
+        <span class="staff-eyebrow">AREA STAF</span>
+        <h1>Masuk ke dashboard</h1>
+        <p>Gunakan akun kasir atau dapur yang sudah didaftarkan.</p>
+
+        <form id="loginForm">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="username" required>
+
+            <label for="loginPassword">Kata sandi</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" required>
+
+            <button class="primary-btn" id="loginBtn" type="submit">Masuk</button>
+        </form>
+
+        <p class="staff-message" id="loginMessage" role="status" aria-live="polite"></p>
+        <a class="staff-back-link" href="index.html">Kembali ke halaman menu</a>
+    </section>
+
+    <section class="staff-dashboard" id="staffPanel" hidden>
+        <div class="panel staff-welcome">
+            <div>
+                <span class="staff-eyebrow">DASHBOARD RESTORAN</span>
+                <h1 id="staffName">Antrean pesanan</h1>
+                <p id="staffRole"></p>
+            </div>
+            <button class="secondary-btn staff-logout" id="logoutBtn" type="button">Keluar</button>
+        </div>
+
+        <p class="staff-message" id="dashboardMessage" role="status" aria-live="polite"></p>
+
+        <div class="staff-grid">
+            <section class="panel staff-section">
+                <div class="staff-section-heading">
+                    <div>
+                        <h2>Antrean dapur</h2>
+                        <p>Pesanan baru tersinkron otomatis.</p>
+                    </div>
+                    <button class="staff-refresh-btn" id="refreshOrdersBtn" type="button">Perbarui</button>
+                </div>
+                <div class="staff-orders" id="ordersList"></div>
+            </section>
+
+            <section class="panel staff-section" id="stockPanel" hidden>
+                <div class="staff-section-heading">
+                    <div>
+                        <h2>Stok menu</h2>
+                        <p>Stok berkurang otomatis saat pesanan diterima.</p>
+                    </div>
+                </div>
+                <div class="stock-list" id="stockList"></div>
+            </section>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="staff.js"></script>
+
+</body>
+</html>

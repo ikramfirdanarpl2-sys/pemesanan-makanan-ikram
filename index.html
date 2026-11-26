@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodOrder | Pesan Makanan Favoritmu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="brand-icon">🍽️</span>
+        <div>
+            <strong>FoodOrder</strong>
+            <small>Enak, praktis, tinggal pesan</small>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#pesanan">Keranjang <span class="nav-count" id="navCartCount" hidden>0</span></a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">HIDANGAN PILIHAN, HARGA BERSAHABAT</p>
+            <h1>Lagi ingin makan apa?</h1>
+            <p>Pilih makanan dan minuman favoritmu. Kami siapkan, kamu nikmati.</p>
+            <a class="hero-btn" href="#menu">Jelajahi menu <span aria-hidden="true">→</span></a>
+            <div class="hero-highlights" aria-label="Pilihan layanan">
+                <span>🚗 Pesan antar</span>
+                <span>🥡 Ambil sendiri</span>
+                <span>🍽️ Makan di tempat</span>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <span aria-hidden="true">🍜</span>
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                 alt="Aneka hidangan siap dinikmati" fetchpriority="high"
+                 onerror="this.hidden = true">
+        </div>
+    </section>
+
+    <div class="connection-status" id="connectionStatus" role="status" aria-live="polite">
+        Menghubungkan ke menu online...
+    </div>
+
+    <div class="layout">
+
+        <section class="left-column">
+
+            <section class="panel" id="menu">
+                <div class="section-heading">
+                    <div>
+                        <h2>Menu Restoran</h2>
+                        <p>Stok aktual tampil setelah database tersambung.</p>
+                    </div>
+                    <span class="pill" id="menuCount">32 pilihan</span>
+                </div>
+
+                <div class="menu-tools">
+                    <label class="search-box" for="menuSearch">
+                        <span aria-hidden="true">⌕</span>
+                        <input type="search" id="menuSearch" aria-label="Cari menu" placeholder="Cari makanan atau minuman..." autocomplete="off">
+                    </label>
+                    <div class="category-filters" role="group" aria-label="Filter kategori menu">
+                        <button class="filter-btn active" type="button" data-category="Semua" aria-pressed="true">Semua</button>
+                        <button class="filter-btn" type="button" data-category="Makanan" aria-pressed="false">🍽️ Makanan</button>
+                        <button class="filter-btn" type="button" data-category="Minuman" aria-pressed="false">🥤 Minuman</button>
+                    </div>
+                </div>
+                <div class="menu-meta">
+                    <span>Menampilkan menu pilihan</span>
+                    <label class="sort-select" for="menuSort">
+                        Urutkan
+                        <select id="menuSort">
+                            <option value="recommended">Rekomendasi</option>
+                            <option value="price-low">Harga terendah</option>
+                            <option value="price-high">Harga tertinggi</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="menu-grid" id="menuGrid"></div>
+            </section>
+
+        </section>
+
+        <aside class="panel checkout" id="pesanan">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Keranjang</h2>
+                    <p>Detail pesanan saat ini.</p>
+                </div>
+                <span class="cart-icon">
+                    <span aria-hidden="true">🛒</span>
+                    <span class="cart-count" id="cartCount">0 item</span>
+                </span>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+                <div class="empty">
+                    Keranjang masih kosong.
+                    <br>Tambahkan menu terlebih dahulu.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="buyerName">Nama Pembeli</label>
+                <input type="text" id="buyerName"
+                       placeholder="Masukkan nama pembeli">
+            </div>
+
+            <div class="form-group">
+                <label for="buyerPhone">Nomor Telepon</label>
+                <input type="tel" id="buyerPhone"
+                       placeholder="08xxxxxxxxxx" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+                <label for="orderType">Jenis Pesanan</label>
+                <select id="orderType">
+                    <option value="takeaway">Ambil sendiri</option>
+                    <option value="dine-in">Makan di tempat</option>
+                    <option value="delivery">Pesan antar (+Rp8.000)</option>
+                </select>
+            </div>
+
+            <div class="form-group conditional-field" id="deliveryDetails" hidden>
+                <label for="deliveryAddress">Alamat Pengantaran</label>
+                <textarea id="deliveryAddress" rows="2"
+                          placeholder="Nama jalan, nomor rumah, dan patokan"
+                          autocomplete="street-address"></textarea>
+                <small class="field-hint">Biaya antar Rp8.000 ditambahkan ke total.</small>
+            </div>
+
+            <div class="form-group conditional-field" id="tableDetails" hidden>
+                <label for="tableNumber">Nomor Meja</label>
+                <input type="text" id="tableNumber" placeholder="Contoh: 08">
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">Metode Pembayaran</label>
+                <select id="paymentMethod">
+                    <option value="Tunai">Tunai</option>
+                    <option value="QRIS">QRIS</option>
+                    <option value="Transfer bank">Transfer bank</option>
+                </select>
+            </div>
+
+            <div class="cash-payment" id="cashPaymentDetails">
+                <label for="cashReceived">Uang diterima</label>
+                <div class="cash-input-row">
+                    <input type="number" id="cashReceived" min="0" step="1000"
+                           inputmode="numeric" placeholder="Masukkan nominal">
+                    <button class="exact-cash-btn" id="exactCashBtn" type="button">Uang pas</button>
+                </div>
+                <div class="cash-shortcuts" aria-label="Tambah nominal uang">
+                    <button type="button" data-cash-add="10000">+10 rb</button>
+                    <button type="button" data-cash-add="20000">+20 rb</button>
+                    <button type="button" data-cash-add="50000">+50 rb</button>
+                </div>
+                <div class="change-summary">
+                    <span>Kembalian</span>
+                    <strong id="changeAmount">—</strong>
+                </div>
+                <small class="field-hint" id="cashHint" aria-live="polite">
+                    Masukkan uang yang diterima untuk menghitung kembalian.
+                </small>
+            </div>
+
+            <div class="price-breakdown">
+
+                <div>
+                    <span>Subtotal</span>
+                    <strong id="subtotal">Rp0</strong>
+                </div>
+
+                <div>
+                    <span>Biaya layanan (5%)</span>
+                    <strong id="serviceFee">Rp0</strong>
+                </div>
+
+                <div>
+                    <span>Biaya antar</span>
+                    <strong id="deliveryFee">Rp0</strong>
+                </div>
+
+                <div class="discount-row">
+                    <label for="discount">Diskon (%)</label>
+                    <input type="number" id="discount"
+                           min="0" max="100" value="0">
+                </div>
+
+                <div>
+                    <span>Diskon</span>
+                    <strong id="discountAmount">Rp0</strong>
+                </div>
+
+                <div class="grand-total">
+                    <span>Total Bayar</span>
+                    <strong id="total">Rp0</strong>
+                </div>
+
+            </div>
+
+            <button class="primary-btn" id="checkoutBtn" disabled>
+                Kirim Pesanan
+            </button>
+
+            <button class="secondary-btn" id="clearCartBtn">
+                Kosongkan Keranjang
+            </button>
+
+            <p class="note" id="orderingNote">
+                Pesanan tersimpan online. Pembayaran QRIS dan transfer perlu dikonfirmasi kasir.
+            </p>
+
+        </aside>
+
+    </div>
+
+</main>
+
+<footer>
+    FoodOrder — Aplikasi Pemesanan Makanan Restoran
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog class="receipt-dialog" id="receiptDialog" aria-labelledby="receiptTitle">
+    <div class="receipt-paper" id="receiptContent"></div>
+    <div class="receipt-actions">
+        <button class="primary-btn" id="printReceiptBtn" type="button">Cetak struk</button>
+        <button class="secondary-btn" id="closeReceiptBtn" type="button">Tutup</button>
+    </div>
+</dialog>
+
+<a class="mobile-cart-bar" id="mobileCartBar" href="#pesanan" hidden>
+    <span class="mobile-cart-summary">
+        <strong id="mobileCartCount">0 item</strong>
+        <small>Lihat keranjang</small>
+    </span>
+    <strong id="mobileCartTotal">Rp0</strong>
+    <span class="mobile-cart-arrow" aria-hidden="true">→</span>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
